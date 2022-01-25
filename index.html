@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>RoundAbout Capacity</title>
+</head>
+
+<body>
+    <form action="">
+        <div id="container">
+            <h3></h3>
+            <h3>N</h3>
+            <h3>S</h3>
+            <h3>E</h3>
+            <h3>W</h3>  
+            <h3>N</h3>
+            <input type="number" placeholder=" N-N">
+            <input type="number" placeholder=" S-N">
+            <input type="number" placeholder=" E-N">
+            <input type="number" placeholder=" W-N">
+            <h3>S</h3>
+            <input type="number" placeholder=" N-S">
+            <input type="number" placeholder=" S-S">
+            <input type="number" placeholder=" E-S">
+            <input type="number" placeholder=" W-S">
+            <h3>E</h3>
+            <input type="number" placeholder=" N-E">
+            <input type="number" placeholder=" S-E">
+            <input type="number" placeholder=" E-E">
+            <input type="number" placeholder=" W-E">
+            <h3>W</h3>
+            <input type="number" placeholder=" N-W">
+            <input type="number" placeholder=" S-W">
+            <input type="number" placeholder=" E-W">
+            <input type="number" placeholder=" W-W">
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary " >Submit</button>
+        </div>
+    </form>
+
+    <div id="result-div">
+        <h5></h5>
+        <h5></h5>
+        <h5></h5>
+        <h5></h5>
+    </div>
+
+
+    <style>
+        #container {
+            margin-top: 40px;
+            margin-right: 40px;
+            height: 400px;  
+            display: grid;
+            grid-template: 40px 40px 40px 40px 40px / 1fr 1fr 1fr 1fr 1fr;
+            grid-gap : 40px ;
+        }
+        input {
+            
+        }
+        h3 {
+            text-align: center;
+        }
+        #result-div {
+            display: grid;
+            grid-template: 60px / 1fr 1fr 1fr 1fr ;
+            grid-gap:  60px;
+            margin-top: 80px;
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+        h5 {
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        const form = document.querySelector('form');
+        const submitBtn = document.querySelector('button');
+        const inputs = document.querySelectorAll('input');
+        const resultText = document.querySelectorAll('h5');
+
+        form.addEventListener('submit' , (event) => {
+            event.preventDefault();
+
+            let aOne = parseInt(inputs[13].value);
+            let bOne = parseInt(inputs[1].value) + parseInt(inputs[9].value);
+            let cOne = parseInt(inputs[14].value) + parseInt(inputs[12].value);
+            let dOne = parseInt(inputs[2].value);
+
+            let pOne = parseFloat((bOne + cOne)/(aOne + bOne + cOne + dOne)).toFixed(3);
+            console.log(pOne); 
+             
+            let aTwo = parseInt(inputs[3].value);
+            let bTwo = parseInt(inputs[11].value) + parseInt(inputs[7].value);
+            let cTwo = parseInt(inputs[1].value) + parseInt(inputs[2].value);
+            let dTwo = parseInt(inputs[9].value);
+
+            let pTwo = parseFloat((bTwo + cTwo)/(aTwo + bTwo + cTwo + dTwo)).toFixed(3);
+            console.log(pTwo);
+            
+            let aThree = parseInt(inputs[8].value);
+            let bThree = parseInt(inputs[4].value) + parseInt(inputs[12].value);
+            let cThree = parseInt(inputs[11].value) + parseInt(inputs[9].value);
+            let dThree = parseInt(inputs[7].value);
+
+            let pThree = parseFloat((bThree + cThree)/(aThree + bThree + cThree + dThree)).toFixed(3);
+            console.log(pThree);
+
+            let aFour = parseInt(inputs[6].value);
+            let bFour = parseInt(inputs[14].value) + parseInt(inputs[2].value);
+            let cFour = parseInt(inputs[4].value) + parseInt(inputs[7].value);
+            let dFour = parseInt(inputs[12].value);
+
+            let pFour = parseFloat((bFour + cFour)/(aFour + bFour + cFour + dFour)).toFixed(3);
+            console.log(pFour);
+
+            resultText[0].innerHTML = "<b>p-1</b> (S-W) = " + pOne;
+            resultText[1].innerHTML = "<b>p-2 </b> (W-N) = " + pTwo;
+            resultText[2].innerHTML = "<b>p-3</b> (N-E) = " + pThree;
+            resultText[3].innerHTML = "<b>p-4</b> (E-S) = " + pFour;
+        }); 
+    </script>
+</body>
+
+</html>
